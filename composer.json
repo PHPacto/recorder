@@ -1,0 +1,40 @@
+{
+    "name": "phpacto/recorder",
+    "description": "Contract testing tool integrated with Guzzle and Phpunit",
+    "license": "GPL-3.0",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Damian Długosz",
+            "email": "bigfootdd@gmail.com",
+            "homepage": "https://github.com/bigfoot90"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "bigfoot90/phpacto": "dev-master",
+        "php-http/curl-client": "^2.1",
+        "php-http/discovery": "^1.12"
+    },
+    "require-dev": {
+        "laminas/laminas-diactoros": "^2.4",
+        "laminas/laminas-httphandlerrunner": "^1.2",
+        "laminas/laminas-stratigility": "^3.3",
+        "mikey179/vfsstream": "^1.6.7",
+        "phpunit/phpunit": "^9.4"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPacto\\Recorder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPacto\\Recorder\\": "tests/"
+        }
+    }
+}

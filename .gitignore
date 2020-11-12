@@ -1,0 +1,5 @@
+/phpunit.xml
+/tests/coverage/
+/vendor/
+/.php_cs.cache
+/.phpunit.result.cache
