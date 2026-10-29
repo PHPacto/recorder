@@ -21,12 +21,12 @@
 
 namespace PHPacto\Recorder\Delivery;
 
-use Bigfoot\PHPacto\Factory\PactRequestFactory;
-use Bigfoot\PHPacto\Factory\PactResponseFactory;
-use Bigfoot\PHPacto\Factory\SerializerFactory;
-use Bigfoot\PHPacto\Logger\Logger;
-use Bigfoot\PHPacto\Pact;
-use Bigfoot\PHPacto\PactInterface;
+use PHPacto\Factory\PactRequestFactory;
+use PHPacto\Factory\PactResponseFactory;
+use PHPacto\Factory\SerializerFactory;
+use PHPacto\Logger\Logger;
+use PHPacto\Pact;
+use PHPacto\PactInterface;
 use Http\Client\Exception\HttpException;
 use Http\Client\Exception\RequestException;
 use Http\Factory\Discovery\HttpFactory;

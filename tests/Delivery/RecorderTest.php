@@ -21,10 +21,9 @@
 
 namespace PHPacto\Recorder\Delivery;
 
-use Bigfoot\PHPacto\Factory\SerializerFactory;
-use Bigfoot\PHPacto\Logger\Logger;
+use PHPacto\Factory\SerializerFactory;
+use PHPacto\Logger\Logger;
 use Http\Client\Exception\HttpException;
-use Http\Client\Exception\RequestException;
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\Stream;
@@ -123,7 +122,9 @@ class RecorderTest extends TestCase
         // Contract Request
         self::assertStringContainsString('method: METHOD', $contract);
         self::assertStringContainsString('path: /my-test-path', $contract);
-        self::assertStringContainsString("Content-Type: 'text/html; charset=utf-8'", $contract);
+        self::assertStringContainsString("Content-Type:", $contract);
+        self::assertStringContainsString("- text/html", $contract);
+        self::assertStringContainsString("- charset=utf-8", $contract);
         self::assertStringContainsString("body:\n        _rule: equals\n        sample: 'Request Body'", $contract);
 
         // Contract Response

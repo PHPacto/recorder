@@ -21,6 +21,6 @@ RUN ./vendor/bin/phpacto validate
 
 # Start
 USER www-data
-CMD php -S 0.0.0.0:8000 bin/recorder.php
+CMD cat BANNER && php -S 0.0.0.0:8000 bin/recorder.php
 
 EXPOSE 8000

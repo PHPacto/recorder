@@ -20,9 +20,10 @@
  */
 
 use PHPacto\Recorder\Delivery\Recorder;
-use Bigfoot\PHPacto\Logger\StdoutLogger;
+use PHPacto\Logger\StdoutLogger;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Factory\Discovery\HttpFactory;
+use Laminas\Diactoros\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -65,7 +66,11 @@ $server = new \Laminas\HttpHandlerRunner\RequestHandlerRunner(
     $app,
     new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter(),
     static function(): ServerRequestInterface {
-        return HttpFactory::serverRequestFactory()::fromGlobals();
+        if (!isset($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'])) {
+            $stream = HttpFactory::streamFactory()->createStream('');
+            return new ServerRequest([], [], '/', 'CLI', $stream);
+        }
+        return ServerRequest::fromGlobals();
     },
     static function(\Throwable $t) use ($logger): ResponseInterface {
         $logger->log($t->getMessage());

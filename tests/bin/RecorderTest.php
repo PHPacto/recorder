@@ -21,9 +21,6 @@
 
 namespace PHPacto\Recorder\Bin;
 
-use Bigfoot\PHPacto\Matcher\Mismatches\Mismatch;
-use Bigfoot\PHPacto\Matcher\Mismatches\MismatchCollection;
-use Http\Discovery\HttpClientDiscovery;
 use org\bovigo\vfs\vfsStream;
 use PHPUnit\Framework\TestCase;
 
@@ -46,7 +43,7 @@ class RecorderTest extends TestCase
     public function test_it_creates_new_pacto_contract_from_real_request()
     {
         putenv('CONTRACTS_DIR=' . $this->fs->url());
-        putenv('RECORDER_PROXY_TO=' . 'https://run.mocky.io:443/');
+        putenv('RECORDER_PROXY_TO=' . 'https://jsonplaceholder.typicode.com/');
 
         require __DIR__ . '/../../bin/recorder.php';
 
